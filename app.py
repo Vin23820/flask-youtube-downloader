@@ -1,15 +1,10 @@
 from flask import Flask, render_template, request
 from pytube import YouTube
 import os
-
 app = Flask(__name__)
-
 DOWNLOAD_FOLDER = "downloads"
-
 if not os.path.exists(DOWNLOAD_FOLDER):
     os.makedirs(DOWNLOAD_FOLDER)
-
-
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
@@ -26,7 +21,6 @@ def home():
             return f"Error: {str(e)}"
 
     return render_template("index.html")
-
-
 if __name__ == "__main__":
     app.run(debug=True)
+
